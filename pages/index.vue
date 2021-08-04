@@ -46,9 +46,21 @@ export default {
   },
   methods: {
     uploadArquivo() {
+      // eslint-disable-next-line no-console
       console.log(this.arquivo)
 
-      if (this.arquivo !== null) this.jaCarregado = true
+      if (this.arquivo === null) {
+        return false
+      }
+
+      this.$axios
+        .$get('example')
+        // eslint-disable-next-line no-console
+        .then((response) => console.log(response))
+        // eslint-disable-next-line no-console
+        .catch((err) => console.log(err))
+
+      this.jaCarregado = true
     },
   },
 }
